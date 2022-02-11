@@ -2,7 +2,7 @@
 
 namespace Domain.Models;
 
-public class Student : ModelBase
+public class Student : BaseEntity
 {
 
 

@@ -1,5 +1,7 @@
-using Infrastructure.Context;
+using Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using Application;
+using Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,10 +12,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<EducationalFormsContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("EducationalFormsDb"));
-});
+
+builder.Services.AddInfrastructureService(builder.Configuration);
+builder.Services.AddApplicationService();
+
+builder.Services.AddRepositories();
 
 var app = builder.Build();
 

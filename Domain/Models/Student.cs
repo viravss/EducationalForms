@@ -1,6 +1,6 @@
 ﻿using Domain.Models.BaseModel;
 namespace Domain.Models;
-public class Consulting : ModelBase
+public class Consulting : BaseEntity
 {
     //TODO skils relatoin 
     public Consulting(string firstName, string lastName, bool gender, DateTime callDateTime, int introductionId, string cellPhone, string phone, int consultantId, DateTime nextFollowUpDate, int status, string followUpDescription)

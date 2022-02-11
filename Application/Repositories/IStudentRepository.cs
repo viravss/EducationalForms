@@ -1,6 +1,6 @@
 ﻿using Domain.Models;
 
-namespace Infrastructure.Interfaces;
+namespace Application.Repositories;
 
 public interface IStudentRepository : IGenericRepository<Student>
 {

@@ -1,5 +1,6 @@
 ﻿using Domain.Models;
 using Microsoft.EntityFrameworkCore;
+using Infrastructure.Configuration;
 
 namespace Infrastructure.Context;
 
@@ -9,8 +10,15 @@ public class EducationalFormsContext : DbContext
     {
     }
 
-    public Student Students { get; set; }
-    public Skill Skills { get; set; }
-    public Consulting Consultings { get; set; }
+    public Student Student { get; set; }
+    public Skill Skill { get; set; }
+    public Consulting Consulting { get; set; }
 
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.SkillConfiguration();
+        modelBuilder.StudentConfiguration();
+        modelBuilder.ConsultingConfiguration();
+        modelBuilder.ConsultantConfiguration();
+    }
 }

@@ -2,9 +2,8 @@
 
 namespace Domain.Models.BaseModel;
 
-public class ModelBase
+public class IdentityBaseEntity
 {
     [Key]
     public int Id { get; set; }
-    public DateTime RegisterDateTime { get; set; }
 }

@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Domain.Models.BaseModel;
 
 namespace Domain.Models;
 
-public class Skill
+public class Skill : IdentityBaseEntity
 {
-    [Key]
-    public int Id { get; set; }
     public string Title { get; set; }
 }

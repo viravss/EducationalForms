@@ -2,7 +2,7 @@
 
 namespace Domain.Models;
 
-public class Consultant : ModelBase
+public class Consultant : BaseEntity
 {
     public string FirstName { get; set; }
     public string LastName { get; set; }
