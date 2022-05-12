@@ -2,6 +2,8 @@ using Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Application;
 using Infrastructure.Repositories;
+using EducationalForms.Api.Extensions;
+using Infrastructure.Context;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,4 +35,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+app.MigrateDatabase<EducationalFormsContext>(context =>
+{
+    EducationalFormsContextSeed.SeedAsync(context).Wait();
+}).Run();
