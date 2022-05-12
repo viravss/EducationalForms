@@ -2,7 +2,7 @@
 
 namespace Application.Repositories;
 
-public interface IConsultingRepository : IGenericRepository<Consulting>
+public interface IConsultingRepository : ICommonRepository<Consulting>
 {
 
 }

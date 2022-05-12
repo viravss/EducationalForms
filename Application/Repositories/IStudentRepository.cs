@@ -2,7 +2,7 @@
 
 namespace Application.Repositories;
 
-public interface IStudentRepository : IGenericRepository<Student>
+public interface IStudentRepository : ICommonRepository<Student>
 {
 
 }

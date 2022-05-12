@@ -5,10 +5,10 @@ using Domain.Models;
 
 namespace Infrastructure.Services.Implementations;
 
-public class StudentService : GenericService<Student>, IStudentService
+public class StudentService : CommonService<Student>, IStudentService
 {
     private readonly IUnitOfWork _unitOfWork;
-    public StudentService(IGenericRepository<Student> repository, IUnitOfWork unitOfWork) : base(repository)
+    public StudentService(ICommonRepository<Student> repository, IUnitOfWork unitOfWork) : base(repository)
     {
         _unitOfWork = unitOfWork;
     }

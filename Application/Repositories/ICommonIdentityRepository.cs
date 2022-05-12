@@ -2,9 +2,9 @@
 using Domain.Models.BaseModel;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace Application.Services;
+namespace Application.Repositories;
 
-public interface IGenericService<T> where T : BaseEntity
+public interface ICommonIdentityRepository<T> where T : IdentityBaseEntity
 {
     Task<T?> GetByIdAsync(int id);
     Task<T?> GetFirst(Expression<Func<T, bool>> expression);

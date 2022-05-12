@@ -2,7 +2,7 @@
 
 namespace Application.Services;
 
-public interface ISkillService : IGenericIdentityService<Skill>
+public interface ISkillService : ICommonIdentityService<Skill>
 {
 
 }

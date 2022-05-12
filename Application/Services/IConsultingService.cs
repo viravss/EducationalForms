@@ -2,7 +2,7 @@
 
 namespace Application.Services;
 
-public interface IConsultingService : IGenericService<Consulting>
+public interface IConsultingService : ICommonService<Consulting>
 {
 
 }

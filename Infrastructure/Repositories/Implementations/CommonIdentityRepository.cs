@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Infrastructure.Repositories.Implementations;
 
-public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
+public class CommonIdentityRepository<T> : ICommonIdentityRepository<T> where T : IdentityBaseEntity
 {
     private readonly EducationalFormsContext _context;
-    public GenericRepository(EducationalFormsContext context)
+    public CommonIdentityRepository(EducationalFormsContext context)
     {
         _context = context;
     }

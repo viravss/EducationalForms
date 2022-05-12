@@ -5,10 +5,10 @@ using Domain.Models;
 
 namespace Infrastructure.Services.Implementations;
 
-public class ConsultingService : GenericService<Consulting>, IConsultingService
+public class ConsultingService : CommonService<Consulting>, IConsultingService
 {
     private readonly IUnitOfWork _unitOfWork;
-    public ConsultingService(IGenericRepository<Consulting> repository, IUnitOfWork unitOfWork) : base(repository)
+    public ConsultingService(ICommonRepository<Consulting> repository, IUnitOfWork unitOfWork) : base(repository)
     {
         _unitOfWork = unitOfWork;
     }

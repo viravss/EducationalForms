@@ -2,7 +2,7 @@
 
 namespace Application.Repositories;
 
-public interface ISkillRepository : IGenericIdentityRepository<Skill>
+public interface ISkillRepository : ICommonIdentityRepository<Skill>
 {
 
 }

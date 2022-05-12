@@ -20,11 +20,11 @@ public static class RepositoriesInjection
     }
     public static void AddIdentityBaseRepository(this IServiceCollection services)
     {
-        services.AddScoped(typeof(IGenericIdentityRepository<>), typeof(GenericIdentityRepository<>));
+        services.AddScoped(typeof(ICommonIdentityRepository<>), typeof(CommonIdentityRepository<>));
     }
     public static void AddBaseRepository(this IServiceCollection services)
     {
-        services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+        services.AddScoped(typeof(ICommonRepository<>), typeof(CommonRepository<>));
     }
     public static void AddStudentRepository(this IServiceCollection services)
     {

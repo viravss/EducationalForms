@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Application.Repositories;
 
-public interface IGenericRepository<T> where T : BaseEntity
+public interface ICommonRepository<T> where T : BaseEntity
 {
     Task<T?> GetByIdAsync(int id);
     Task<T?> GetFirst(Expression<Func<T, bool>> expression);

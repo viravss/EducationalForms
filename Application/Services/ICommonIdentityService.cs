@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Application.Services;
 
-public interface IGenericIdentityService<T> where T : IdentityBaseEntity
+public interface ICommonIdentityService<T> where T : IdentityBaseEntity
 {
     Task<T?> GetByIdAsync(int id);
     Task<T?> GetFirst(Expression<Func<T, bool>> expression);

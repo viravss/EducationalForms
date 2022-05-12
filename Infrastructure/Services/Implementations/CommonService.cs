@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Infrastructure.Services.Implementations;
 
-public class GenericService<T> : IGenericService<T> where T : BaseEntity
+public class CommonService<T> : ICommonService<T> where T : BaseEntity
 {
-    private readonly IGenericRepository<T> _repository;
+    private readonly ICommonRepository<T> _repository;
 
-    public GenericService(IGenericRepository<T> repository)
+    public CommonService(ICommonRepository<T> repository)
     {
         _repository = repository;
     }
