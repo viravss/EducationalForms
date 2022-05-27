@@ -11,21 +11,32 @@ public class UnitOfWork : IUnitOfWork
     public UnitOfWork(EducationalFormsContext context)
     {
         _context = context;
-        Student = new StudentRepository(_context);
         Consultant = new ConsultantRepository(_context);
-        Consulting = new ConsultingRepository(_context);
+        FailureReason = new FailureReasonRepository(_context);
+        FamiliarityMethod = new FamiliarityMethodRepository(_context);
+        Lead = new LeadRepository(_context);
+        LeadSkill = new LeadSkillRepository(_context);
+        Service = new ServiceRepository(_context);
         Skill = new SkillRepository(_context);
+        Student = new StudentRepository(_context);
+        StudentService = new StudentServiceRepository(_context);
+        StudentSkill = new StudentSkillRepository(_context);
     }
-
     public void Dispose()
     {
         _context.Dispose();
     }
-
-    public IStudentRepository Student { get; }
     public IConsultantRepository Consultant { get; }
-    public IConsultingRepository Consulting { get; }
+    public IFailureReasonRepository FailureReason { get; }
+    public IFamiliarityMethodRepository FamiliarityMethod { get; }
+    public ILeadRepository Lead { get; }
+    public ILeadSkillRepository LeadSkill { get; }
+    public IServiceRepository Service { get; }
     public ISkillRepository Skill { get; }
+    public IStudentRepository Student { get; }
+    public IStudentServiceRepository StudentService { get; }
+    public IStudentSkillRepository StudentSkill { get; }
+
     public async Task<bool> SaveChangesAsync()
     {
         await _context.Database.BeginTransactionAsync();

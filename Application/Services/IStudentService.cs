@@ -2,7 +2,7 @@
 
 namespace Application.Services;
 
-public interface IStudentService : ICommonService<Student>
+public interface IStudentService : ICommonIdentityService<StudentService>
 {
 
 }

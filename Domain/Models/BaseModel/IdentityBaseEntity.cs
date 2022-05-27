@@ -6,4 +6,5 @@ public class IdentityBaseEntity
 {
     [Key]
     public int Id { get; set; }
+ 
 }

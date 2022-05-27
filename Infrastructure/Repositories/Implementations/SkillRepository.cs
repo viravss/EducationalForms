@@ -4,9 +4,9 @@ using Infrastructure.Context;
 
 namespace Infrastructure.Repositories.Implementations;
 
-public class ConsultantRepository : CommonRepository<Consultant>, IConsultantRepository
+public class SkillRepository : CommonIdentityRepository<Skill>, ISkillRepository
 {
-    public ConsultantRepository(EducationalFormsContext context) : base(context)
+    public SkillRepository(EducationalFormsContext context) : base(context)
     {
     }
 }

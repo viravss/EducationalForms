@@ -1,14 +1,13 @@
 ﻿using Application.Repositories;
 using Application.Services;
 using Application.UnitOfWork;
-using Domain.Models;
 
 namespace Infrastructure.Services.Implementations;
 
-public class SkillService : CommonIdentityService<Skill>, ISkillService
+public class StudentService : CommonIdentityService<Domain.Models.StudentService>, IStudentService
 {
     private readonly IUnitOfWork _unitOfWork;
-    public SkillService(ICommonIdentityRepository<Skill> repository, IUnitOfWork unitOfWork) : base(repository)
+    public StudentService(ICommonIdentityRepository<Domain.Models.StudentService> repository, IUnitOfWork unitOfWork) : base(repository)
     {
         _unitOfWork = unitOfWork;
     }

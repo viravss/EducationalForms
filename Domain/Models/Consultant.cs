@@ -2,10 +2,10 @@
 
 namespace Domain.Models;
 
-public class Consultant : BaseEntity
+public class Consultant : IdentityBaseEntity
 {
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
+    public string Name { get; set; }
+    public string Family { get; set; }
     public bool IsActive { get; set; }
-    public bool IsDeleted { get; set; }
+
 }

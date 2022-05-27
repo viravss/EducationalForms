@@ -1,9 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Domain.Models.BaseModel;
+﻿using Domain.Models.BaseModel;
 
 namespace Domain.Models;
 
 public class Skill : IdentityBaseEntity
 {
-    public string Title { get; set; }
+    public Skill()
+    {
+        LeadSkills = new HashSet<LeadSkill>();
+    }
+    public string Name { get; set; }
+    public long Price { get; set; }
+    public int Time { get; set; }
+    public ICollection<LeadSkill> LeadSkills { get; set; }
 }

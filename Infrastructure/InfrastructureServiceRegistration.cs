@@ -1,5 +1,8 @@
 ﻿using System.Runtime.CompilerServices;
 using Infrastructure.Context;
+using Infrastructure.Repositories;
+using Infrastructure.Services;
+using Infrastructure.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,7 +14,9 @@ public static class InfrastructureServiceRegistration
     public static IServiceCollection AddInfrastructureService(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext(configuration);
-
+        services.AddUnitOfWork();
+        services.AddRepositories();
+        services.AddServices();
         return services;
     }
 

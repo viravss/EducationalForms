@@ -5,10 +5,10 @@ using Domain.Models;
 
 namespace Infrastructure.Services.Implementations;
 
-public class StudentService : CommonService<Student>, IStudentService
+public class SkillService : CommonIdentityService<Skill>, ISkillService
 {
     private readonly IUnitOfWork _unitOfWork;
-    public StudentService(ICommonRepository<Student> repository, IUnitOfWork unitOfWork) : base(repository)
+    public SkillService(ICommonIdentityRepository<Skill> repository, IUnitOfWork unitOfWork) : base(repository)
     {
         _unitOfWork = unitOfWork;
     }

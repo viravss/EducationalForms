@@ -5,10 +5,10 @@ using Domain.Models;
 
 namespace Infrastructure.Services.Implementations;
 
-public class ConsultantService : CommonService<Consultant>, IConsultantService
+public class FailureReasonService : CommonIdentityService<FailureReason>, IFailureReasonService
 {
     private readonly IUnitOfWork _unitOfWork;
-    public ConsultantService(ICommonRepository<Consultant> repository, IUnitOfWork unitOfWork) : base(repository)
+    public FailureReasonService(ICommonIdentityRepository<FailureReason> repository, IUnitOfWork unitOfWork) : base(repository)
     {
         _unitOfWork = unitOfWork;
     }
