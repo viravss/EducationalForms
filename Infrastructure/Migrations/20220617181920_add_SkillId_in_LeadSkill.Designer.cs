@@ -4,6 +4,7 @@ using Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(EducationalFormsContext))]
-    partial class EducationalFormsContextModelSnapshot : ModelSnapshot
+    [Migration("20220617181920_add_SkillId_in_LeadSkill")]
+    partial class add_SkillId_in_LeadSkill
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -131,7 +133,7 @@ namespace Infrastructure.Migrations
                     b.Property<int>("Gender")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("ModifyOn")
+                    b.Property<DateTime>("ModifyOn")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
@@ -276,7 +278,7 @@ namespace Infrastructure.Migrations
                     b.Property<int>("MaritalStatus")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("ModifyOn")
+                    b.Property<DateTime>("ModifyOn")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")

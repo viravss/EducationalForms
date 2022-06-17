@@ -8,6 +8,7 @@ public class LeadSkillDto
     [Key]
     public int Id { get; set; }
     public int LeadId { get; set; }
+    public int SkillId { get; set; }
     public virtual Lead Lead { get; set; }
     public ICollection<SkillDto> Skills { get; set; }
 }

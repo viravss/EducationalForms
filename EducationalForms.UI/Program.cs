@@ -1,5 +1,5 @@
 using Application;
-using EducationalForms.Api.Extensions;
+using EducationalForms.UI.Extensions;
 using Infrastructure;
 using Infrastructure.Context;
 

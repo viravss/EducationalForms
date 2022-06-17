@@ -23,6 +23,13 @@ public class EducationalFormsContextSeed
             context.FailureReason.AddRange(GetFailureReasonsConfiguration());
             await context.SaveChangesAsync();
         }
+        if (!context.Consultant.Any())
+        {
+            context.Consultant.AddRange(GetConsultantsConfiguration());
+            await context.SaveChangesAsync();
+        }
+
+
     }
 
     private static List<Skill> GetSkillConfiguration()
@@ -213,6 +220,26 @@ public class EducationalFormsContextSeed
 
         });
         return failures;
+    }
+
+
+    private static List<Consultant> GetConsultantsConfiguration()
+    {
+        var consultants = new List<Consultant>();
+        consultants.Add(new Consultant
+        {
+            Name = "بیتا ",
+            Family = "خلیلی"
+
+        });
+        consultants.Add(new Consultant
+        {
+            Name = "مهدیه سادات ",
+            Family = "موسوی"
+
+        });
+
+        return consultants;
     }
 
 

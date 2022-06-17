@@ -43,12 +43,13 @@ public class UnitOfWork : IUnitOfWork
         try
         {
             await _context.SaveChangesAsync();
+            await _context.Database.CommitTransactionAsync();
             return true;
         }
         catch (Exception e)
         {
             //TODO Log 
-            await _context.Database.CommitTransactionAsync();
+            await _context.Database.RollbackTransactionAsync();
             return false;
         }
     }

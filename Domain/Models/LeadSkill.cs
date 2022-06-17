@@ -10,5 +10,6 @@ public class LeadSkill : IdentityBaseEntity
     }
     public int LeadId { get; set; }
     public virtual Lead Lead { get; set; }
+    public int SkillId { get; set; }
     public ICollection<Skill> Skills { get; set; }
 }

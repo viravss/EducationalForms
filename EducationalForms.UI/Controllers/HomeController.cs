@@ -12,7 +12,7 @@ namespace EducationalForms.UI.Controllers
         {
             _unitOfWork = unitOfWork;
         }
-
+        [Route("/")]
         public IActionResult Index()
         {
             var failureReasons = _unitOfWork.FailureReason
