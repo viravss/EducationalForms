@@ -1,14 +1,22 @@
 ﻿@using Domain.Enums
 @model EducationalForms.UI.Dtos.LeadDto
 @{
-    ViewData["Title"] = "ایجاد تماس جدید";
+    ViewData["Title"] = "ایجاد مشاوره جدید";
     Layout = "_Layout";
 }
+<link type="text/css" href="https://cdn.jsdelivr.net/npm/@@dashboardcode/bsmultiselect@1.1.18/dist/css/BsMultiSelect.bs4.min.css" />
 
-<h1>ایجاد یک تماس جدید</h1>
+<style>
+    .badge {
+        color: #000000 !important;
+    }
+
+</style>
+
+<h1>ایجاد مشاوره جدید</h1>
 
 <div class="col-md-12 col-lg-12">
-    <h4 class="mb-3">ورود اطلاعات برای تماس جدید</h4>
+    <h4 class="mb-3">ورود اطلاعات مشاوره جدید</h4>
     <form action="/Lead/Create" method="post">
         <div class="row g-3">
             <div class="col-sm-6">
@@ -36,8 +44,19 @@
                 @Html.TextBoxFor(m=>m.CellPhone,"",new { @class="form-control" , @required="required"  } )
             </div>
             <div class="col-sm-6">
-                @Html.LabelFor(t=>t.PhoneNumber , new {@class="form-label"})
-                @Html.TextBoxFor(m=>m.PhoneNumber,"",new { @class="form-control" , @required="required"  } )
+                <div class="row">
+                    <div class="col-sm-10">
+                        @Html.LabelFor(t => t.PhoneNumber, new {@class = "form-label"})
+                        @Html.TextBoxFor(m => m.PhoneNumber, "", new {@class = "form-control", @required = "required"})
+                    </div>
+                    <div class="col-sm-2">
+                        @Html.LabelFor(t => t.CityCode, new {@class = "form-label"})
+                        @Html.TextBoxFor(m => m.CityCode, "", new {@class = "form-control", @required = "required"})
+                    </div>
+
+                </div>
+
+
             </div>
 
             <div class="col-sm-6">
@@ -153,3 +172,21 @@
         <button class="w-100 btn btn-primary btn-lg" type="submit">ذخیره</button>
     </form>
 </div>
+
+
+@section Scripts{
+
+
+<!-- add polyfills to support popper 2 in IE1 -->
+<script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.11.0/dist/umd/popper.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@@dashboardcode/bsmultiselect@1.1.18/dist/js/BsMultiSelect.bs4.min.js "></script>
+
+
+<script>
+    $(document).ready(function () {
+        $('#LeadSkillIds').bsMultiSelect();
+    });
+</script>
+
+}

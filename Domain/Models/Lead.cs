@@ -18,7 +18,7 @@ public class Lead : BaseEntity
     public virtual FamiliarityMethod? FamiliarityMethod { get; set; }
     [StringLength(11)]
     public string CellPhone { get; set; }
-    [StringLength(10)]
+    [StringLength(12)]
     public string PhoneNumber { get; set; }
     public int? ConsultantId { get; set; }
     public Consultant? Consultant { get; set; }

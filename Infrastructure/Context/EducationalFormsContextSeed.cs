@@ -107,6 +107,10 @@ public class EducationalFormsContextSeed
         var familiarityMethods = new List<FamiliarityMethod>();
         familiarityMethods.Add(new FamiliarityMethod
         {
+            Name = "نا مشخص"
+        });
+        familiarityMethods.Add(new FamiliarityMethod
+        {
             Name = "ariagostar.net"
         });
         familiarityMethods.Add(new FamiliarityMethod
@@ -177,6 +181,10 @@ public class EducationalFormsContextSeed
         var failures = new List<FailureReason>();
         failures.Add(new FailureReason
         {
+            Name = "نا مشخص"
+        });
+        failures.Add(new FailureReason
+        {
             Name = "جذب توسط رقبا"
         });
         failures.Add(new FailureReason
@@ -226,6 +234,12 @@ public class EducationalFormsContextSeed
     private static List<Consultant> GetConsultantsConfiguration()
     {
         var consultants = new List<Consultant>();
+        consultants.Add(new Consultant
+        {
+            Name = "نا مشخص ",
+            Family = ""
+
+        });
         consultants.Add(new Consultant
         {
             Name = "بیتا ",

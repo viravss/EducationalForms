@@ -1,10 +1,11 @@
-﻿@model List<EducationalForms.UI.Dtos.LeadDto>
+﻿@using EducationalForms.UI.Helper
+@model List<EducationalForms.UI.Dtos.LeadDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "_Layout";
 }
 
-<h1>لیست تماس ها </h1>
+<h1>لیست مشاوره ها </h1>
 
 <table class="table">
     <tr>
@@ -23,7 +24,7 @@
         <tr>
             <td> @item.Name @item.Family</td>
             <td>@item.Gender.ToString()</td>
-            <td>@item.CalledOn.ToString("g")</td>
+            <td>@item.CalledOn.ToPersianDateTime()</td>
             <td>@item.CellPhone</td>
             <td>@item.PhoneNumber</td>
             <td>@item.Consultant?.Name @item.Consultant?.Family</td>

@@ -33,6 +33,10 @@ public class LeadDto
     [DisplayName("تلفن ثابت")]
     [StringLength(10)]
     public string PhoneNumber { get; set; }
+    [Display(Name = "کد شهر")]
+    [DisplayName("کد شهر")]
+    public string CityCode { get; set; }
+
     [Display(Name = "مشاور")]
     [DisplayName("مشاور")]
     public int? ConsultantId { get; set; }

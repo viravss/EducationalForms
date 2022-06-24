@@ -2,6 +2,7 @@
 using Domain.Enums;
 using Domain.Models;
 using EducationalForms.UI.Dtos;
+using EducationalForms.UI.Helper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -86,7 +87,7 @@ namespace EducationalForms.UI.Controllers
 
 
             ViewBag.GenderEnumList = Enum.GetValues(typeof(GenderEnum)).Cast<GenderEnum>()
-                .Select(t => new SelectListItem { Text = t.GetDisplayName(), Value = t.GetDisplayName() }).ToList();
+                .Select(t => new SelectListItem { Text = t.GetDescription(), Value = t.GetDisplayName() }).ToList();
             return View();
         }
 
@@ -110,7 +111,7 @@ namespace EducationalForms.UI.Controllers
                     FamiliarityMethodId = leadDto.FamiliarityMethodId,
                     Family = leadDto.Family,
                     Name = leadDto.Name,
-                    PhoneNumber = leadDto.PhoneNumber
+                    PhoneNumber = leadDto.CityCode +"-"+ leadDto.PhoneNumber
                 });
                 await _unitOfWork.SaveChangesAsync();
 

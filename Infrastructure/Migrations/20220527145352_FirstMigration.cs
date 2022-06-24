@@ -64,7 +64,7 @@ namespace Infrastructure.Migrations
                     CalledOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FamiliarityMethodId = table.Column<int>(type: "int", nullable: true),
                     CellPhone = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(12)", maxLength: 10, nullable: false),
                     ConsultantId = table.Column<int>(type: "int", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FailureReasonId = table.Column<int>(type: "int", nullable: false),
@@ -114,7 +114,7 @@ namespace Infrastructure.Migrations
                     FamiliarityMethodId = table.Column<int>(type: "int", nullable: false),
                     ConsultantId = table.Column<int>(type: "int", nullable: false),
                     CellPhone = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(12)", maxLength: 10, nullable: false),
                     WhatsAppNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreateOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifyOn = table.Column<DateTime>(type: "datetime2", nullable: false)
