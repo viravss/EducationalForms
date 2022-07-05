@@ -10,5 +10,6 @@ public class StudentService : IdentityBaseEntity
     }
     public int StudentId { get; set; }
     public virtual Student Student { get; set; }
+    public int ServiceId { get; set; }
     public ICollection<Service> Services { get; set; }
 }

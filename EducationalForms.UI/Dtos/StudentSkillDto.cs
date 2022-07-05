@@ -9,5 +9,6 @@ public class StudentSkillDto
     public int Id { get; set; }
     public int StudentId { get; set; }
     public virtual StudentDto Student { get; set; }
+    public int SkillId { get; set; }
     public ICollection<SkillDto> Skills { get; set; }
 }

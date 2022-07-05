@@ -35,6 +35,7 @@ public class LeadDto
     public string PhoneNumber { get; set; }
     [Display(Name = "کد شهر")]
     [DisplayName("کد شهر")]
+    [MaxLength(3)]
     public string CityCode { get; set; }
 
     [Display(Name = "مشاور")]

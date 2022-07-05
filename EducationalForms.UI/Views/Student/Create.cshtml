@@ -1,0 +1,166 @@
+﻿@using Domain.Enums
+@model EducationalForms.UI.Dtos.StudentDto
+@{
+    ViewData["Title"] = "ایجاد هنر آموز جدید";
+    Layout = "_Layout";
+}
+<link type="text/css" href="https://cdn.jsdelivr.net/npm/@@dashboardcode/bsmultiselect@1.1.18/dist/css/BsMultiSelect.bs4.min.css" />
+
+<style>
+    .badge {
+        color: #000000 !important;
+    }
+
+</style>
+<h1>ایجاد هنر آموز جدید</h1>
+<div class="col-md-12 col-lg-12">
+    <h4 class="mb-3">ورود اطلاعات هنر آموز جدید</h4>
+    <form action="/Student/Create" method="post">
+        <div class="row g-3">
+            <div class="col-sm-6">
+                @Html.LabelFor(t=>t.Name , new {@class="form-label"})
+                @Html.TextBoxFor(m=>m.Name,"",new { @class="form-control" , @required="required"  } )
+            </div>
+            <div class="col-sm-6">
+                @Html.LabelFor(t=>t.Family , new {@class="form-label"})
+                @Html.TextBoxFor(m=>m.Family,"",new { @class="form-control" , @required="required"  } )
+            </div>
+            <div class="col-sm-6">
+                <div class="form-check">
+                    @Html.LabelFor(t=>t.Gender , new {@class="form-label"})
+                    @Html.DropDownListFor(t => t.Gender, (List<SelectListItem>)ViewBag.GenderEnumList, null, new {@class = "form-select"})
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-check">
+                    @Html.LabelFor(t=>t.FamiliarityMethodId , new {@class="form-label"})
+                    @Html.DropDownListFor(t => t.FamiliarityMethodId, (List<SelectListItem>)ViewBag.FamiliarityMethod, null, new {@class = "form-select"})
+                </div>
+            </div>
+            <div class="col-sm-6">
+                @Html.LabelFor(t=>t.CellPhone , new {@class="form-label"})
+                @Html.TextBoxFor(m=>m.CellPhone,"",new { @class="form-control" , @required="required"  } )
+            </div>
+
+            <div class="col-sm-6">
+                @Html.LabelFor(t=>t.NationalCode , new {@class="form-label"})
+                @Html.TextBoxFor(m=>m.NationalCode,"",new { @class="form-control" , @required="required"  } )
+            </div>
+
+            <div class="col-sm-6">
+                <div class="row">
+                    <div class="col-sm-10">
+                        @Html.LabelFor(t => t.PhoneNumber, new {@class = "form-label"})
+                        @Html.TextBoxFor(m => m.PhoneNumber, "", new {@class = "form-control", @required = "required"})
+                    </div>
+                    <div class="col-sm-2">
+                        @Html.LabelFor(t => t.CityCode, new {@class = "form-label"})
+                        @Html.TextBoxFor(m => m.CityCode, "", new {@class = "form-control", @required = "required"})
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="col-sm-6">
+                @Html.LabelFor(t=>t.PlaceOfIssued , new {@class="form-label"})
+                @Html.TextBoxFor(m=>m.PlaceOfIssued,"",new { @class="form-control" , @required="required"  } )
+            </div>
+
+            <div class="col-sm-6">
+                @Html.LabelFor(t=>t.FatherName , new {@class="form-label"})
+                @Html.TextBoxFor(m=>m.FatherName,"",new { @class="form-control" , @required="required"  } )
+            </div>
+
+
+            <div class="col-sm-6">
+                @Html.LabelFor(t=>t.WhatsAppNumber , new {@class="form-label"})
+                @Html.TextBoxFor(m=>m.WhatsAppNumber,"",new { @class="form-control" , @required="required"  } )
+            </div>
+
+
+            <div class="col-sm-6">
+                @Html.LabelFor(t=>t.Citizen , new {@class="form-label"})
+                @Html.TextBoxFor(m=>m.Citizen,"",new { @class="form-control" , @required="required"  } )
+            </div>
+
+
+            <div class="col-sm-6">
+                @Html.LabelFor(t=>t.IdentityNumber , new {@class="form-label"})
+                @Html.TextBoxFor(m=>m.IdentityNumber,"",new { @class="form-control" , @required="required"  } )
+            </div>
+
+            @* <div class="col-sm-6">
+                @Html.LabelFor(t=>t.BirthDate , new {@class="form-label"})
+                @Html.TextBoxFor(m=>m.BirthDate,"",new { @class="form-control" , @required="required"  } )
+                </div>*@
+
+
+            <div class="col-sm-6">
+                <div class="form-check">
+                    @Html.LabelFor(t=>t.MaritalStatus , new {@class="form-label"})
+                    @Html.DropDownListFor(t => t.MaritalStatus, (List<SelectListItem>)ViewBag.MaritalStatusEnums, null, new {@class = "form-select"})
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="col-sm-6">
+                <div class="form-check">
+                    @Html.LabelFor(t=>t.ConsultantId , new {@class="form-label"})
+                    @Html.DropDownListFor(t => t.ConsultantId, (List<SelectListItem>)ViewBag.Consultants, null, new {@class = "form-select"})
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-check">
+                    @Html.LabelFor(t=>t.StudentSkillIds , new {@class="form-label"})
+                    @Html.ListBoxFor(r=>r.StudentSkillIds , (List<SelectListItem>)ViewBag.LeadSkills)
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="col-sm-6">
+                <div class="form-check">
+                    @Html.LabelFor(t=>t.StudentServiceIds , new {@class="form-label"})
+                    @Html.ListBoxFor(r=>r.StudentServiceIds, (List<SelectListItem>)ViewBag.StudentServices)
+                </div>
+            </div>
+
+
+            <div class="col-sm-6">
+                @Html.LabelFor(t=>t.Description , new {@class="form-label"})
+                @Html.TextAreaFor(m=>m.Description,5 , 5,new { @class="form-control" , @required="required"  } )
+            </div>
+
+        </div>
+        <hr class="my-4">
+
+        <button class="w-100 btn btn-primary btn-lg" type="submit">ذخیره</button>
+    </form>
+</div>
+
+
+@section Scripts{
+
+
+<!-- add polyfills to support popper 2 in IE1 -->
+<script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.11.0/dist/umd/popper.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@@dashboardcode/bsmultiselect@1.1.18/dist/js/BsMultiSelect.bs4.min.js "></script>
+
+
+<script>
+    $(document).ready(function () {
+    $('#StudentSkillIds').bsMultiSelect();
+    });
+</script>
+
+}

@@ -10,5 +10,6 @@ public class StudentSkill:IdentityBaseEntity
     }
     public int StudentId { get; set; }
     public virtual Student Student { get; set; }
+    public int SkillId { get; set; }
     public ICollection<Skill> Skills { get; set; }
 }
