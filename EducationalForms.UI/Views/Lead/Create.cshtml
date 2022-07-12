@@ -16,12 +16,12 @@
 <h1>ایجاد مشاوره جدید</h1>
 
 <div class="col-md-12 col-lg-12">
-    <h4 class="mb-3">ورود اطلاعات مشاوره جدید</h4>
+    <h4 class="mb-3">ورود اطلاعات متقاضی جدید</h4>
     <form action="/Lead/Create" method="post">
         <div class="row g-3">
             <div class="col-sm-6">
                 @Html.LabelFor(t=>t.Name , new {@class="form-label"})
-                @Html.TextBoxFor(m=>m.Name,"",new { @class="form-control" , @required="required"  } )
+                @Html.TextBoxFor(m=>m.Name,"",new { @class="form-control" } )
             </div>
             <div class="col-sm-6">
                 @Html.LabelFor(t=>t.Family , new {@class="form-label"})
@@ -47,11 +47,11 @@
                 <div class="row">
                     <div class="col-sm-10">
                         @Html.LabelFor(t => t.PhoneNumber, new {@class = "form-label"})
-                        @Html.TextBoxFor(m => m.PhoneNumber, "", new {@class = "form-control", @required = "required"})
+                        @Html.TextBoxFor(m => m.PhoneNumber, "", new {@class = "form-control"})
                     </div>
                     <div class="col-sm-2">
                         @Html.LabelFor(t => t.CityCode, new {@class = "form-label"})
-                        @Html.TextBoxFor(m => m.CityCode, "", new {@class = "form-control", @required = "required"})
+                        @Html.TextBoxFor(m => m.CityCode, "", new {@class = "form-control"})
                     </div>
                 </div>
             </div>
@@ -84,87 +84,8 @@
                 @Html.LabelFor(t=>t.Description , new {@class="form-label"})
                 @Html.TextAreaFor(m=>m.Description,5 , 5,new { @class="form-control" , @required="required"  } )
             </div>
-
-
-            @* <div class="col-sm-6" dir="ltr">
-                <label for="username" class="form-label">اسم المستخدم</label>
-                <div class="input-group has-validation">
-                <span class="input-group-text">@@</span>
-                <input type="text" class="form-control" id="username" placeholder="اسم المستخدم" required>
-                <div class="invalid-feedback">
-                اسم المستخدم الخاص بك مطلوب.
-                </div>
-                </div>
-                </div>*@
-
         </div>
         <hr class="my-4">
-        @*
-            <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="same-address">
-            <label class="form-check-label" for="same-address">عنوان الشحن هو نفس عنوان الفوترة الخاص بي</label>
-            </div>
-
-            <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="save-info">
-            <label class="form-check-label" for="save-info">احفظ هذه المعلومات في المرة القادمة</label>
-            </div>
-
-            <hr class="my-4">
-
-            <h4 class="mb-3">طريقة الدفع</h4>
-
-            <div class="my-3">
-            <div class="form-check">
-            <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
-            <label class="form-check-label" for="credit">بطاقة ائتمان</label>
-            </div>
-            <div class="form-check">
-            <input id="cash" name="paymentMethod" type="radio" class="form-check-input" required>
-            <label class="form-check-label" for="cash">نقد</label>
-            </div>
-            <div class="form-check">
-            <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
-            <label class="form-check-label" for="paypal">PayPal</label>
-            </div>
-            </div>
-
-            <div class="row gy-3">
-            <div class="col-md-6">
-            <label for="cc-name" class="form-label">الاسم على البطاقة</label>
-            <input type="text" class="form-control" id="cc-name" placeholder="" required>
-            <small class="text-muted">الاسم الكامل كما هو معروض على البطاقة</small>
-            <div class="invalid-feedback">
-            الاسم على البطاقة مطلوب
-            </div>
-            </div>
-
-            <div class="col-md-6">
-            <label for="cc-number" class="form-label">رقم البطاقة</label>
-            <input type="text" class="form-control" id="cc-number" placeholder="" required>
-            <div class="invalid-feedback">
-            رقم بطاقة الائتمان مطلوب
-            </div>
-            </div>
-
-            <div class="col-md-3">
-            <label for="cc-expiration" class="form-label">تاريخ انتهاء الصلاحية</label>
-            <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-            <div class="invalid-feedback">
-            تاريخ انتهاء الصلاحية مطلوب
-            </div>
-            </div>
-
-            <div class="col-md-3">
-            <label for="cc-cvv" class="form-label">الرمز الثلاثي (CVV)</label>
-            <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-            <div class="invalid-feedback">
-            رمز الحماية مطلوب
-            </div>
-            </div>
-            </div>
-
-            <hr class="my-4">*@
 
         <button class="w-100 btn btn-primary btn-lg" type="submit">ذخیره</button>
     </form>
