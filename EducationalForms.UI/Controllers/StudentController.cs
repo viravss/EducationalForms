@@ -34,7 +34,7 @@ namespace EducationalForms.UI.Controllers
                 Gender = t.Gender,
                 Name = t.Name,
                 CellPhone = t.CellPhone,
-                CreateOn = t.CreateOn,
+                RegisterTime = t.RegisterTime,
                 Consultant = new ConsultantDto
                 {
                     Family = t.Consultant?.Family,
@@ -69,7 +69,8 @@ namespace EducationalForms.UI.Controllers
                     ConsultantId = lead.ConsultantId ?? 0,
                     Description = lead.Description,
                     Family = lead.Family,
-                    PhoneNumber = lead.PhoneNumber,
+                    PhoneNumber = lead.PhoneNumber.Split("-").Length > 1 ? lead.PhoneNumber.Split("-")[1].ToString() : "",
+                    CityCode = lead.PhoneNumber.Split("-").Length > 1 ? lead.PhoneNumber.Split("-")[0].ToString() : "",
                     StudentSkillIds = lead.LeadSkills.Select(t => t.SkillId).ToArray(),
                 };
             }
@@ -124,7 +125,8 @@ namespace EducationalForms.UI.Controllers
         {
             try
             {
-
+                studentDto.BirthDate = studentDto.BirthDateDto.ConvertedDateTime;
+                studentDto.RegisterTime = studentDto.CreatedOnDto.ConvertedDateTime;
                 var student = await _unitOfWork.Student.Create(new Student
                 {
                     Gender = studentDto.Gender,
@@ -144,7 +146,8 @@ namespace EducationalForms.UI.Controllers
                     PhotoAddress = "",
                     PlaceOfIssued = studentDto.PlaceOfIssued,
                     PortalStatus = studentDto.PortalStatus,
-                    WhatsAppNumber = studentDto.WhatsAppNumber
+                    WhatsAppNumber = studentDto.WhatsAppNumber,
+                    RegisterTime = studentDto.RegisterTime
                 });
                 await _unitOfWork.SaveChangesAsync();
 

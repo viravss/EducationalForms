@@ -1,5 +1,7 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using Domain.Enums;
 
 namespace EducationalForms.UI.Dtos;
@@ -25,6 +27,9 @@ public class StudentDto
     public string IdentityNumber { get; set; }
     [Display(Name = "تاریخ تولد")]
     public DateTime BirthDate { get; set; }
+
+    public DateDto BirthDateDto { get; set; }
+
     [Display(Name = "وضعیت پورتال")]
     public bool PortalStatus { get; set; }
     [Display(Name = "توضیحات")]
@@ -33,8 +38,9 @@ public class StudentDto
     public string PhotoAddress { get; set; }
     [Display(Name = "محل تولد")]
     public string PlaceOfIssued { get; set; }
-
-    public DateTime CreateOn { get; set; }
+    public DateDto CreatedOnDto { get; set; }
+    [Display(Name = "تاریخ ثبت نام")]
+    public DateTime RegisterTime { get; set; }
     public DateTime ModifyOn { get; set; }
     [Display(Name = "وضعیت تاهل")]
     public MaritalStatusEnum MaritalStatus { get; set; }
@@ -65,4 +71,20 @@ public class StudentDto
     [Display(Name = "سرویس ها")]
     public int[] StudentServiceIds { get; set; }
 
+}
+
+public class DateDto
+{
+    public int Year { get; set; }
+    public int Month { get; set; }
+    public int Day { get; set; }
+
+    public DateTime ConvertedDateTime
+    {
+        get
+        {
+            var persianCalendar = new PersianCalendar();
+            return persianCalendar.ToDateTime(Year, Month, Day, 00, 00, 00, 00);
+        }
+    }
 }

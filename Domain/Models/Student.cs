@@ -31,6 +31,8 @@ public class Student : BaseEntity
     public Consultant Consultant { get; set; }
     [MaxLength(11)]
     public string CellPhone { get; set; }
+
+    public DateTime RegisterTime { get; set; }
     [MaxLength(10)]
     public string PhoneNumber { get; set; }
     public string WhatsAppNumber { get; set; }
