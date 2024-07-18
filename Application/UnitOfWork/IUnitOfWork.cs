@@ -4,7 +4,6 @@ namespace Application.UnitOfWork;
 
 public interface IUnitOfWork : IDisposable
 {
-
     IConsultantRepository Consultant { get; }
     IFailureReasonRepository FailureReason { get; }
     IFamiliarityMethodRepository FamiliarityMethod { get; }
@@ -15,5 +14,6 @@ public interface IUnitOfWork : IDisposable
     IStudentRepository Student { get; }
     IStudentServiceRepository StudentService { get; }
     IStudentSkillRepository StudentSkill { get; }
+    IUserRepository User { get; }
     Task<bool> SaveChangesAsync();
 }

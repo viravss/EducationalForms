@@ -8,6 +8,7 @@ namespace Infrastructure.UnitOfWork;
 public class UnitOfWork : IUnitOfWork
 {
     private readonly EducationalFormsContext _context;
+
     public UnitOfWork(EducationalFormsContext context)
     {
         _context = context;
@@ -21,11 +22,14 @@ public class UnitOfWork : IUnitOfWork
         Student = new StudentRepository(_context);
         StudentService = new StudentServiceRepository(_context);
         StudentSkill = new StudentSkillRepository(_context);
+        User = new UserRepository(_context);
     }
+
     public void Dispose()
     {
         _context.Dispose();
     }
+
     public IConsultantRepository Consultant { get; }
     public IFailureReasonRepository FailureReason { get; }
     public IFamiliarityMethodRepository FamiliarityMethod { get; }
@@ -36,6 +40,7 @@ public class UnitOfWork : IUnitOfWork
     public IStudentRepository Student { get; }
     public IStudentServiceRepository StudentService { get; }
     public IStudentSkillRepository StudentSkill { get; }
+    public IUserRepository User { get; }
 
     public async Task<bool> SaveChangesAsync()
     {

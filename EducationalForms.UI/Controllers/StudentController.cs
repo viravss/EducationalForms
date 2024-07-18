@@ -2,6 +2,7 @@
 using Domain.Enums;
 using Domain.Models;
 using EducationalForms.UI.Dtos;
+using EducationalForms.UI.Extensions;
 using EducationalForms.UI.Helper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -21,14 +22,23 @@ namespace EducationalForms.UI.Controllers
             _unitOfWork = unitOfWork;
         }
 
+        [MyAuthorize(RoleTypeEnum.Admin, RoleTypeEnum.Consultant)]
         [Route("student")]
         // GET: LeadController
         public IActionResult Index()
         {
-            var lead = _unitOfWork.Student.GetAll(t => t.Id != null)
-                 .Include(t => t.FamiliarityMethod)
-                 .Include(t => t.Consultant)
-                 .ToList();
+            var currentUser = UserHelper.GetCurrentUser(HttpContext);
+
+
+            if (currentUser.consultantId == 0) return Redirect("/");
+
+            var lead = _unitOfWork.Student.GetAll(t => t.ConsultantId ==
+                                                       (currentUser.role == "Admin"
+                                                           ? t.ConsultantId
+                                                           : currentUser.consultantId))
+                .Include(t => t.FamiliarityMethod)
+                .Include(t => t.Consultant)
+                .ToList();
             var leadDto = lead.Select(t => new StudentDto
             {
                 Gender = t.Gender,
@@ -69,12 +79,13 @@ namespace EducationalForms.UI.Controllers
                     ConsultantId = lead.ConsultantId ?? 0,
                     Description = lead.Description,
                     Family = lead.Family,
-                    PhoneNumber = lead.PhoneNumber.Split("-").Length > 1 ? lead.PhoneNumber.Split("-")[1].ToString() : "",
+                    PhoneNumber = lead.PhoneNumber.Split("-").Length > 1
+                        ? lead.PhoneNumber.Split("-")[1].ToString()
+                        : "",
                     CityCode = lead.PhoneNumber.Split("-").Length > 1 ? lead.PhoneNumber.Split("-")[0].ToString() : "",
                     StudentSkillIds = lead.LeadSkills.Select(t => t.SkillId).ToArray(),
                 };
             }
-
 
 
             var familiarityMethods = _unitOfWork.FamiliarityMethod
@@ -98,14 +109,12 @@ namespace EducationalForms.UI.Controllers
                     .ToList();
 
 
-
             var services = _unitOfWork.Service
                 .GetAll(t => t.Id != null);
             ViewBag.StudentServices =
                 services
                     .Select(t => new SelectListItem { Text = t.Name, Value = t.Id.ToString() })
                     .ToList();
-
 
 
             ViewBag.GenderEnumList = Enum.GetValues(typeof(GenderEnum)).Cast<GenderEnum>()
@@ -180,9 +189,6 @@ namespace EducationalForms.UI.Controllers
                         .ToList();
 
 
-
-
-
                 var consultants = _unitOfWork.Consultant
                     .GetAll(t => t.IsActive);
                 ViewBag.Consultants =
@@ -198,15 +204,12 @@ namespace EducationalForms.UI.Controllers
                         .ToList();
 
 
-
                 var services = _unitOfWork.Service
                     .GetAll(t => t.Id != null);
                 ViewBag.StudentServices =
                     services
                         .Select(t => new SelectListItem { Text = t.Name, Value = t.Id.ToString() })
                         .ToList();
-
-
 
 
                 ViewBag.GenderEnumList = Enum.GetValues(typeof(GenderEnum)).Cast<GenderEnum>()

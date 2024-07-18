@@ -21,6 +21,8 @@ public class EducationalFormsContext : DbContext
     public DbSet<Service> Service { get; set; }
     public DbSet<StudentService> StudentService { get; set; }
     public DbSet<StudentSkill> StudentSkill { get; set; }
+    public DbSet<User> User { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ConsultantConfiguration();
@@ -33,6 +35,7 @@ public class EducationalFormsContext : DbContext
         modelBuilder.ServiceConfiguration();
         modelBuilder.StudentServiceConfiguration();
         modelBuilder.StudentSkillConfiguration();
+        modelBuilder.UserConfiguration();
     }
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
@@ -41,7 +44,6 @@ public class EducationalFormsContext : DbContext
         {
             switch (entityEntry.State)
             {
-
                 case EntityState.Modified:
                     entityEntry.Entity.ModifyOn = DateTime.Now;
                     break;
@@ -50,6 +52,7 @@ public class EducationalFormsContext : DbContext
                     break;
             }
         }
+
         return base.SaveChangesAsync(cancellationToken);
     }
 }

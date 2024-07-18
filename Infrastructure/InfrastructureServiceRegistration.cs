@@ -20,7 +20,7 @@ public static class InfrastructureServiceRegistration
         return services;
     }
 
-    public static void AddDbContext(this IServiceCollection services, IConfiguration configuration)
+    private static void AddDbContext(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<EducationalFormsContext>(options => options
             .UseSqlServer(configuration

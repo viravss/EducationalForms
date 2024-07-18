@@ -8,4 +8,5 @@ public class Consultant : IdentityBaseEntity
     public string Family { get; set; }
     public bool IsActive { get; set; }
 
+    public virtual User User { get; set; }
 }

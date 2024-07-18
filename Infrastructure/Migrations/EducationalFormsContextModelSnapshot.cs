@@ -362,6 +362,43 @@ namespace Infrastructure.Migrations
                     b.ToTable("StudentSkill");
                 });
 
+            modelBuilder.Entity("Domain.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("CellPhone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ConsultantId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte>("RoleType")
+                        .HasColumnType("tinyint");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ConsultantId")
+                        .IsUnique();
+
+                    b.ToTable("User");
+                });
+
             modelBuilder.Entity("LeadSkillSkill", b =>
                 {
                     b.Property<int>("LeadSkillsId")
@@ -469,6 +506,18 @@ namespace Infrastructure.Migrations
                     b.Navigation("Student");
                 });
 
+            modelBuilder.Entity("Domain.Models.User", b =>
+                {
+                    b.HasOne("Domain.Models.Consultant", "Consultant")
+                        .WithOne("User")
+                        .HasForeignKey("Domain.Models.User", "ConsultantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_User_Consultant");
+
+                    b.Navigation("Consultant");
+                });
+
             modelBuilder.Entity("LeadSkillSkill", b =>
                 {
                     b.HasOne("Domain.Models.LeadSkill", null)
@@ -481,6 +530,12 @@ namespace Infrastructure.Migrations
                         .WithMany()
                         .HasForeignKey("SkillsId")
                         .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Domain.Models.Consultant", b =>
+                {
+                    b.Navigation("User")
                         .IsRequired();
                 });
 
